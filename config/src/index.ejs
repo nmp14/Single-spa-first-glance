@@ -42,14 +42,17 @@
   <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
   <% if (isLocal) { %>
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "@test/root-config": "//localhost:9000/test-root-config.js"
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@test/root-config": "http://localhost:9000/root-config.js",
+          "@test/appNav": "http://localhost:9001/appNav.js",
+          "@test/mfe1": "http://localhost:9002/mfe1.js",
+          "@test/mfe2": "http://localhost:9003/mfe2.js"
+        }
       }
-    }
-  </script>
-  <% } %>
+    </script>
+  <% } %>  
 
   <!--
     If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded

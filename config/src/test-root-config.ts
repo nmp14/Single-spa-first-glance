@@ -1,20 +1,34 @@
 import { registerApplication, start } from "single-spa";
-
-registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
-  activeWhen: ["/"],
-});
+import * as isActive from './activity-functions';
 
 // registerApplication({
-//   name: "@test/navbar",
-//   app: () => System.import("@test/navbar"),
-//   activeWhen: ["/"]
+//   name: "@single-spa/welcome",
+//   app: () =>
+//     System.import(
+//       "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
+//     ),
+//   activeWhen: ["/"],
 // });
 
-start({
-  urlRerouteOnly: true,
+registerApplication({
+  name: "@test/appNav",
+  // @ts-ignore
+  app: () => System.import("@test/appNav"),
+  activeWhen: isActive.nav
 });
+
+registerApplication({
+  name: "@test/mfe1",
+  // @ts-ignore
+  app: () => System.import("@test/mfe1"),
+  activeWhen: isActive.mfe1
+});
+
+registerApplication({
+  name: "@test/mfe2",
+  // @ts-ignore
+  app: () => System.import("@test/mfe2"),
+  activeWhen: isActive.mfe2
+});
+
+start();
